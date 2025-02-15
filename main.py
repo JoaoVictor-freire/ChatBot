@@ -1,7 +1,6 @@
 from function import MathAssistant
 
-# Inicializar o assistente de matemática
-api_key = "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"  # Substitua pela sua chave real
+api_key = "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"
 assistant = MathAssistant(api_key)
 
 print("Assistant: Bem-vindo ao Tutor de Matemática! Pergunte o que quiser.")
@@ -13,7 +12,6 @@ while True:
         print("Assistant: Encerrando o chat. Até logo!")
         break
 
-    # Identificar a intenção do usuário
     intent = assistant.identify_intent(user_input)
 
     if intent == "resolver":

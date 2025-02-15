@@ -10,10 +10,9 @@ class MathAssistant:
             "content": "Você é um agente assistente que auxilia crianças com questões de matemática. Você responde com respostas curtas."
         }
         self.chat_history = [self.system_prompt]
-        self.last_problem = None  # Para armazenar o último problema resolvido
+        self.last_problem = None
 
     def solve_problem(self, problem):
-        """ Resolve um problema matemático e armazena para possível correção. """
         self.last_problem = problem  # Salvar o último problema resolvido
 
         prompt = f"Resolva o seguinte problema matemático, explicando todo o passo a passo de maneira bem resumida: {problem}."
@@ -30,7 +29,6 @@ class MathAssistant:
         return response
 
     def make_equation(self, subject, difficulty="mediana"):
-        """ Gera um problema matemático com base em um tema e dificuldade. """
         prompt = f"Formule um problema matemático sobre {subject} de dificuldade {difficulty}, adequado para alunos até o 8º ano."
         self.chat_history.append({"role": "user", "content": prompt})
 
@@ -42,11 +40,10 @@ class MathAssistant:
 
         response = completion.choices[0].message.content
         self.chat_history.append({"role": "assistant", "content": response})
-        self.last_problem = response
+        self.last_problem = response # Salvar o último problema resolvido
         return response
 
     def fix_solution(self, student_ans, problem=None):
-        """ Corrige uma resposta do aluno para um problema fornecido ou para o último problema resolvido. """
         if problem is None:
             if self.last_problem is None:
                 return "Nenhum problema foi resolvido anteriormente. Forneça um problema para correção."
@@ -67,7 +64,6 @@ class MathAssistant:
         return response
 
     def explain_concept(self, concept, difficulty="medio"):
-        """ Explica um conceito matemático com base no nível do aluno. """
         prompt = f"Explique o conceito de {concept} para um estudante com conhecimento {difficulty}."
 
         self.chat_history.append({"role": "user", "content": prompt})
@@ -83,7 +79,6 @@ class MathAssistant:
         return response
 
     def identify_intent(self, user_input):
-        """ Identifica a intenção do usuário. """
         prompt = f"""O usuário digitou: "{user_input}". Determine a intenção e retorne apenas uma das palavras:
         - "resolver" → Se quer resolver um problema matemático.
         - "criar" → Se quer gerar um problema matemático.
