@@ -1,6 +1,9 @@
+import os
 from function import MathAssistant
+from dotenv import load_dotenv
 
-api_key = "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"
+load_dotenv()
+api_key = os.getenv("GROP_API_KEY")
 assistant = MathAssistant(api_key)
 
 print("Assistant: Bem-vindo ao Tutor de Matemática! Pergunte o que quiser.")
