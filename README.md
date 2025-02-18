@@ -33,7 +33,7 @@ Antes de começar, certifique-se de ter instalado:
 
 1. **Clone o repositório**
 ```sh
- git clone https://github.com/seu-usuario/chatbot-educacional.git
+ git clone https://github.com/JoaoVictor-freire/ChatBot.git
 ```
 
 2. **Instale as dependências**
