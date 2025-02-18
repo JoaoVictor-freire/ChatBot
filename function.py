@@ -40,7 +40,7 @@ class MathAssistant:
 
         response = completion.choices[0].message.content
         self.chat_history.append({"role": "assistant", "content": response})
-        self.last_problem = response # Salvar o último problema resolvido
+        self.last_problem = response # Salvar o último problema criado
         return response
 
     def fix_solution(self, student_ans, problem=None):
@@ -80,11 +80,11 @@ class MathAssistant:
 
     def identify_intent(self, user_input):
         prompt = f"""O usuário digitou: "{user_input}". Determine a intenção e retorne apenas uma das palavras:
-        - "resolver" → Se quer resolver um problema matemático.
-        - "criar" → Se quer gerar um problema matemático.
-        - "corrigir" → Se quer verificar uma resposta.
-        - "explicar" → Se quer aprender um conceito.
-        - "desconhecido" → Se a intenção não for clara.
+        - "resolver" - Se quer resolver um problema matemático.
+        - "criar" - Se quer gerar um problema matemático.
+        - "corrigir" - Se quer verificar uma resposta.
+        - "explicar" - Se quer aprender um conceito.
+        - "desconhecido" - Se a intenção não for clara.
         Retorne apenas uma dessas palavras, sem explicação adicional."""
 
         completion = self.client.chat.completions.create(
